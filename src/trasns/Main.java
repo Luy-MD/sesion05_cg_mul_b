@@ -7,8 +7,8 @@ public class Main
 	static Scanner entrada = new Scanner(System.in);
 	public static void main(String[] args) {
 		// Defina y asigne dos objetos, un Cadrado y una Circunferencia
-		// Solicite al usuario ingresar el valor de un vector de traslaciÛn 
-		// Aplique el vector de traslaciÛn anterior a cada uno de los objetos referidos
+		// Solicite al usuario ingresar el valor de un vector de traslaci√≥n 
+		// Aplique el vector de traslaci√≥n anterior a cada uno de los objetos referidos
 		// Muestre las posiciones originales y finales de cada uno de los objetos referidos
 		
 		System.out.println("Ingrese un vector de translacion");
@@ -45,25 +45,70 @@ class Cuadrado {
         this.c = c;
         this.lado = lado;
     }
-    public void Traslacion(Coord t) {  // Complete los par·metros requeridos
+    public void Traslacion(Coord t) {  // Complete los par√°metros requeridos
      
     	c.setX(t.getX()+c.getX());
     	c.setY(t.getY()+c.getY());
     	
     }
-    public void Escalado(int s) {  // Complete los par·metros requeridos
+    public void Escalado(int s) {  // Complete los par√°metros requeridos
         
     	lado = (int)(lado*(1+s/100.0f));
     }
-    public void Rotacion() {  // Complete los par·metros requeridos
+    public void Rotacion() {  // Complete los par√°metros requeridos
         
+	 private AffineteTransform at; 
+    	 private double grados;
+    	
+    	public Cuadrado(int x, int y) {
+    		at = new AffineTransform();
+    		
+    		this.x = x;
+    		this.y = y;
+    	}
+    	
+    	public AffineTransform getTransform() {
+    		return at;
+    	}   
     }
 }
 
 class Circunferencia {
-    Coord c;
-    float radio;
-    // Implementar los mÈtodos Traslacion, Escalado y Rotacion para Èsta clase
-}
+    private Coord c;
+	    private float radio;
+	    // Implementar los m√©todos Traslacion, Escalado y Rotacion para √©sta clase
+	    
+	    public Coord getC() {
+	    	return c;
+	    }
+	    
+	    public void setC(Coord c) {
+	    	this.c = c;
+	    }
+	    
+	    public float getRadio() {
+	    	return radio;
+	    }
+		
+	    public void setRadio(float radio) {
+	    	this.radio = radio;
+	    }
+	    public Circunferencia(Coord c, float radio) {
+	        this.c = c;
+	        this.radio = radio;
+	    
+	   }
+	    public void Traslacion(Coord t) { 
+	        
+	    	c.setX(t.getX()+c.getX());
+	    	c.setY(t.getY()+c.getY());
+	    	
+	    }
+	    
+	     public void Escalado(int s) { 
+	        
+	    	radio = (int)(radio*(1+s/100.0f));
+	    }     
+   }
 
 }
